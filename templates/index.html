@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Password</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <!-- Conteneur pour l’arrière-plan VANTA -->
+  <div id="vanta-bg"></div>
+
+  <!-- Formulaire de connexion -->
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.password.label }} {{ form.password(size=32, id="password-field") }}<br><br>
+    {{ form.submit() }}
+  </form>
+
+  <!-- Scripts nécessaires -->
+  <script src="{{ url_for('static', filename='js/three.r134.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vanta.birds.min.js') }}"></script>
+  <script>
+    VANTA.BIRDS({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      backgroundColor: 0x0,
+      color1: 0x1c55d,
+      color2: 0x0,
+      birdSize: 1.10,
+      wingSpan: 20.00,
+      separation: 74.00,
+      cohesion: 76.00
+    });
+  </script>
+  <script>
+  // Active le focus au chargement de la page
+  window.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('password-field');
+  if (input) input.focus(); // Focus direct, caret invisible grâce au CSS
+  });
+</script>
+</body>
+</html>
